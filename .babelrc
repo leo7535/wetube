@@ -1,0 +1,3 @@
+{
+  "presets": ["@babel/preset-env"] //최신의 것이지만 실험적이진 않음.
+}

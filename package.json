@@ -2,10 +2,31 @@
   "name": "wetube",
   "version": "1.0.0",
   "description": "Cloning Youtube with VanilaJS and NodeJS",
-  "main": "index.js",
   "author": "Kim Jae Yoon",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node init.js --delay 2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo7535/wetube.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leo7535/wetube/issues"
+  },
+  "homepage": "https://github.com/leo7535/wetube#readme"
 }
