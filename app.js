@@ -12,12 +12,14 @@ import routes from "./routes";
 const app = express();
 
 app.set("view engine", "pug");
+app.use("/uploads", express.static("uploads"));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(helmet());
+// /uploads로 가면 uploads라는 디렉토리 안으로 들어가게 된다.
 app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
