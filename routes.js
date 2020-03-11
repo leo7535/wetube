@@ -8,7 +8,7 @@ const SEARCH = "/search";
 // Users
 
 const USERS = "/users";
-const USER_DETAIL = "/:id";
+const USER_DETAIL = "/:id"; // /:변수이름 은 data를 가지고 있다는 것을 표현한다.
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
@@ -40,13 +40,27 @@ const routes = {
   upload: UPLOAD,
   videoDetail: id => {
     if (id) {
+      //id가 존재하면
       return `/videos/${id}`;
     } else {
+      //id가 존재하지 않으면
       return VIDEO_DETAIL;
     }
   },
-  editVideo: EDIT_VIDEO,
-  deleteVideo: DELETE_VIDEO
+  editVideo: id => {
+    if (id) {
+      return `/videos/${id}/edit`;
+    } else {
+      return EDIT_VIDEO;
+    }
+  },
+  deleteVideo: id => {
+    if (id) {
+      return `/videos/${id}/delete`;
+    } else {
+      return DELETE_VIDEO;
+    }
+  }
 };
 
 export default routes;
