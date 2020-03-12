@@ -13,6 +13,8 @@ const app = express();
 
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));
+//누군가 /static으로 접근하려하면 static폴더로 가게한다.
+app.use("/static", express.static("static"));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
