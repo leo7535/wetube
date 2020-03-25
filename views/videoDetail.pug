@@ -1,16 +1,21 @@
 extends layouts/main 
 
 block content
-    .video__player
-        //-파일이 서버에 있으므로 앞에 '/'를 붙여줘야 한다. 
-        video(src=`/${video.fileUrl}`, controls="true") 
-    .video__info
-        a(href=routes.editVideo(video.id)) 수정하기
-        h5.video__title=video.title
-        span.video__views=video.views
-        p.video__description=video.description
-    .video__comments
-        if video.comments.length == 1
-            span.video__comment-number 1 comment
-        else
-            span.video__comment-number #{video.comments.length} comments
+    .video-detail__container
+        .video__player
+            //-파일이 서버에 있으므로 앞에 '/'를 붙여줘야 한다. 
+            video(src=`/${video.fileUrl}`, controls="true", width="600", height="400") 
+        .video__info
+            a(href=routes.editVideo(video.id))
+                button.video__info--edit edit Video
+            h5.video__title=video.title
+            if video.views === 1
+                span.video__views 1 view
+            else
+                span.video__views #{video.views} views
+            p.video__description=video.description 
+        .video__comments
+            if video.comments.length == 1
+                span.video__comment-number 1 comment
+            else
+                span.video__comment-number #{video.comments.length} comments
