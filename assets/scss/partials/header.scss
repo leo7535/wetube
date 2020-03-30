@@ -41,14 +41,15 @@ form {
   //   border-color: rgb(240, 240, 240);
 }
 
-// input {
-//   width: 100%;
-//   height: 100%;
-//   border: 1px solid;
-//   border-color: rgb(240, 240, 240);
-//   border-radius: 5px;
-//   font-size: 14px;
-// }
+input {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  border-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  font-size: 14px;
+}
 
 .fab.fa-youtube {
   color: $red;

@@ -1,7 +1,7 @@
 .home-videos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(6, minmax(150px, 1fr)); //아이템의 가로길이
+  grid-gap: 25px;
   .videoBlock:first-child,
   .videoBlock:nth-child(2) {
     grid-column: span 3;
