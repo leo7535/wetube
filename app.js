@@ -8,9 +8,11 @@ import userRouter from "./routers/userRouter"; //default로 export하지 않았�
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import passport from "passport";
 
 const app = express();
 
+app.use(helmet());
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));
 //누군가 /static으로 접근하려하면 static폴더로 가게한다.
@@ -20,10 +22,13 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(helmet());
+app.use(passport.initialize();  //passport 초기화
+app.use(passport.session());    //session을 저장시켜준다.
+
 // /uploads로 가면 uploads라는 디렉토리 안으로 들어가게 된다.
 app.use(localMiddleware);
 
+//Router
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
