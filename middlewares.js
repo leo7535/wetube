@@ -8,6 +8,7 @@ export const localMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.routes = routes;
   res.locals.user = req.user || {}; //use가 존재하지않으면 빈 object를 준다.
+  console.log(req.user);
   next(); //middelWare가 connection과 route 사이에 있으므로
 };
 

@@ -14,6 +14,7 @@ export const postJoin = async (req, res, next) => {
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
+      //Middleware.js에서 req.user
       const user = await User({
         name,
         email

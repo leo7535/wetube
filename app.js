@@ -15,7 +15,7 @@ import "./passport";
 
 const app = express();
 
-//console.log(process.env.COOKIE_SECRET);
+console.log(process.env.COOKIE_SECRET);
 
 app.use(helmet());
 app.set("view engine", "pug");
@@ -29,7 +29,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(
   session({
-    secret: process.env.COOKIE_SECRET
+    secret: process.env.COOKIE_SECRET,
+    resave: true,
+    //초기화 되지 않은 정보 저장
+    saveUninitialized: false
   })
 );
 app.use(passport.initialize()); //passport 초기화
