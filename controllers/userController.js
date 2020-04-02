@@ -30,7 +30,7 @@ export const postJoin = async (req, res, next) => {
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
-//authenticate는 사용자의 username(여기선 email), passwordfmf 찾아보도록 되있음
+//authenticate는 사용자의 username(여기선 email), password를 찾아보도록 되있음
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home

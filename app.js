@@ -9,8 +9,13 @@ import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
 import passport from "passport";
+import session from "express-session";
+
+import "./passport";
 
 const app = express();
+
+//console.log(process.env.COOKIE_SECRET);
 
 app.use(helmet());
 app.set("view engine", "pug");
@@ -22,8 +27,13 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(passport.initialize();  //passport 초기화
-app.use(passport.session());    //session을 저장시켜준다.
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET
+  })
+);
+app.use(passport.initialize()); //passport 초기화
+app.use(passport.session()); //session을 저장시켜준다, 쿠키를 사용하기위해 필요하다.
 
 // /uploads로 가면 uploads라는 디렉토리 안으로 들어가게 된다.
 app.use(localMiddleware);
