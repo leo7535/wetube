@@ -7,7 +7,7 @@ export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
 export const postJoin = async (req, res, next) => {
   const {
-    body: { name, email, password, password2 }
+    body: { name, email, password, password2 },
   } = req;
   if (password !== password2) {
     res.status(400);
@@ -17,7 +17,7 @@ export const postJoin = async (req, res, next) => {
       //Middleware.js에서 req.user
       const user = await User({
         name,
-        email
+        email,
       });
       await User.register(user, password);
       next();
@@ -31,14 +31,17 @@ export const postJoin = async (req, res, next) => {
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
-//authenticate는 사용자의 username(여기선 email), password를 찾아보도록 되있음
+//authenticate는 사용자의 username(여기선 email), password를 찾아보도록 되있고, 찾은 다음에는 req.user라는 오브젝트로 만들어준다.
 export const postLogin = passport.authenticate("local", {
-  failureRedirect: routes.login,
-  successRedirect: routes.home
+  failureRedirect: routes.login, //로그인에 실패하면
+  successRedirect: routes.home, //로그인에 성공하면
+  //failureFlash: true,
+  //successFlash: true,
 });
 
 export const logout = (req, res) => {
   //To Do: Process Log Out
+  req.logout();
   res.redirect(routes.home);
 };
 export const users = (req, res) => res.render("users", { pageTitle: "Users" });

@@ -20,13 +20,13 @@ export const home = async (req, res) => {
 export const search = async (req, res) => {
   //const searchingBy = req.query.term;
   const {
-    query: { term: searchingBy }
+    query: { term: searchingBy },
   } = req;
   let videos = [];
   try {
     videos = await Video.find({
       // i는 insensitive , 대소문자 구분을 하지 않을 정도의 덜 민감함
-      title: { $regex: searchingBy, $options: "i" }
+      title: { $regex: searchingBy, $options: "i" },
     });
   } catch (error) {
     console.log(error);
@@ -42,13 +42,13 @@ export const postUpload = async (req, res) => {
   //const path = req.file
   const {
     body: { title, description },
-    file: { path }
+    file: { path },
   } = req;
   const newVideo = await Video.create({
     fileUrl: path,
     title,
     description,
-    path: path.replace(/\\/g, "/")
+    path: path.replace(/\\/g, "/"),
   });
   console.log(path);
   console.log(newVideo);
@@ -60,7 +60,7 @@ export const postUpload = async (req, res) => {
 export const videoDetail = async (req, res) => {
   //const id = req.params
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
     const video = await Video.findById(id);
@@ -74,7 +74,7 @@ export const videoDetail = async (req, res) => {
 // Edit Video
 export const getEditVideo = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
 
   try {
@@ -88,7 +88,7 @@ export const getEditVideo = async (req, res) => {
 export const postEditVideo = async (req, res) => {
   const {
     params: { id },
-    body: { title, description }
+    body: { title, description },
   } = req;
 
   //findOneAndUpdate({id},{title,description}) 이라고 하면 수정되지 않음 이유는 몰라
@@ -103,7 +103,7 @@ export const postEditVideo = async (req, res) => {
 // Delete Video
 export const deleteVideo = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
 
   // _id:id 로 해주는 이유는 mongoDB 내장 객체에 _id라는 key 값이 저장되있어서 그곳으로 저장

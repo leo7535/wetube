@@ -5,13 +5,15 @@ import {
   users,
   userDetail,
   editProfile,
-  changePassword
+  changePassword,
 } from "../controllers/userController"; //pug랑 rendering 시켜주는 함수들
+import { onlyPrivate } from "../middlewares";
 export const userRouter = express.Router();
 
 userRouter.get(routes.users, users);
-userRouter.get(routes.editProfile, editProfile); //순서 중요
-userRouter.get(routes.changePassword, changePassword); //순서 중요
+
+userRouter.get(routes.editProfile, onlyPrivate, editProfile); //순서 중요
+userRouter.get(routes.changePassword, onlyPrivate, changePassword); //순서 중요
 userRouter.get(routes.userDetail(), userDetail); //순서 중요
 
 export default userRouter;
