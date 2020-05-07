@@ -39,6 +39,12 @@ export const postLogin = passport.authenticate("local", {
   //successFlash: true,
 });
 
+export const githubLogin = passport.authenticate;
+
+export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
+  console.log(accessToken, refreshToken, profile, cb);
+}; //github에 갔다가 다시 돌아오는 과정의 함수
+
 export const logout = (req, res) => {
   //To Do: Process Log Out
   req.logout();
