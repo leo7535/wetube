@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   facebookId: Number,
-  githubId: Number
+  githubId: Number,
 });
 
 //어떤 name이 usernameField가 될지 정해준다.

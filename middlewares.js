@@ -7,7 +7,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.routes = routes;
-  res.locals.user = req.user || null; //use가 존재하지않으면 빈 object를 준다.
+  res.locals.loggedUser = req.user || null; //user가 존재하지않으면 빈 object를 준다.
   console.log(req.user); //로그인을 하고난 뒤에야 req.user 오브젝트로 만들어주는것이다.
   next(); //middelWare가 connection과 route 사이에 있으므로
 };
