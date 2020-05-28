@@ -23,3 +23,4 @@ passport.use(
 
 passport.serializeUser(User.serializeUser()); //쿠키에 정보를 넘길 것 : id
 passport.deserializeUser(User.deserializeUser()); //그 id를 보고 어떻게 사용자를 찾을것인가
+//웹 페이지를 옮겨다닐 때마다 사용자를 식별해줌

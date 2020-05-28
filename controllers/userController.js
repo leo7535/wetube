@@ -2,6 +2,7 @@
 import routes from "../routes";
 import User from "../models/User";
 import passport from "passport";
+import { response } from "express";
 //--- 회원가입 ---
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res, next) => {
@@ -47,7 +48,9 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     const user = await User.findOne({ email }); //사용자의 email과 깃허브로부터 온 email이 동일한 사용자를 찾음
     if (user) {
       user.githubId = id; // 깃허브에서 가져온 id로 할당해준다.
-      user.save();
+      const testUser = user.save();
+
+      console.log("testUser:" + testUser);
       return cb(null, user); // 매개변수 1은 에러없음, 2는 user를 찾았습니다 의 내용
     } else {
       //깃허브의 이메일과 동일한 사용자가 없다면 ? => 새로 만들어줘서 신규가입 시켜준다.
